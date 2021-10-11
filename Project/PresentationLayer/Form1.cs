@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Project.DataAccessLayer;
-//using Project.BusinessLogicLayer;
+using Project.BusinessLogicLayer;
 
 namespace Project
 {
     public partial class Form1 : Form
     {
-        List<string> myEmployees = new List<string>();
+        List<Employee> myEmployees = new List<Employee>();
 
         public Form1()
         {
@@ -38,17 +38,19 @@ namespace Project
         private void button1_Click(object sender, EventArgs e)
         {
             bool flagValid = true;
-            if ((tbxName.Text == null) &&(tbxName.Text == null))
+            string name = tbxName.Text, pass = tbxPass.Text;
+
+            if ((name == "") &&(pass == ""))
             {
                 MessageBox.Show("Please enter a username and password");
                 flagValid = false;
             }
-            else if (tbxName.Text == null)
+            else if (name == "")
             {
                 MessageBox.Show("Please enter a username");
                 flagValid = false;
             }
-            else if (tbxName.Text == null)
+            else if (pass == "")
             {
                 MessageBox.Show("Please enter a password");
                 flagValid = false;
@@ -56,9 +58,7 @@ namespace Project
             if (flagValid == true)
             {
                 txtFileHandler fh = new txtFileHandler();
-                //fh.addEmployee(tbxName.Text, tbxPass.Text);
-                //fh.writeFile();
-                //MessageBox.Show("Successfully registered user " + tbxName.Text);
+
                 tbxName.Text = "";
                 tbxPass.Text = "";
             }
@@ -68,29 +68,34 @@ namespace Project
         private void btnNew_Click(object sender, EventArgs e)
         {
             bool flagValid = true;
-            if ((tbxName.Text == null) && (tbxName.Text == null))
+            string name = tbxName.Text, pass = tbxPass.Text;
+
+            //Validation - Ensures fields are not null
+            if ((name == "") && (pass == ""))
             {
                 MessageBox.Show("Please enter a username and password");
                 flagValid = false;
             }
-            else if (tbxName.Text == null)
+            else if (name == "")
             {
                 MessageBox.Show("Please enter a username");
                 flagValid = false;
             }
-            else if (tbxName.Text == null)
+            else if (pass == "")
             {
                 MessageBox.Show("Please enter a password");
                 flagValid = false;
             }
+
+            //If all inputs are valid, message displays and employee is saved to file
             if (flagValid == true)
             {
                 txtFileHandler fh = new txtFileHandler();
                 fh.addEmployee(tbxName.Text, tbxPass.Text);
                 fh.writeFile();
                 MessageBox.Show("Successfully registered user " + tbxName.Text);
-                tbxName.Text = "";
-                tbxPass.Text = "";
+                //tbxName.Text = ""; //text will stay for debugging
+                //tbxPass.Text = "";
             }
         }
     }

@@ -9,29 +9,30 @@ namespace Project.DataAccessLayer
     class txtFileHandler
     {
         public const string path = @"F:\PRG Project\Project\DataLayer\Employees.txt"; //Absolute Path to txt data file
-        public List<string> EmpList = new List<string>();
-        public List<Employee> readList = new List<Employee>();
+        public List<Employee> EmpList = new List<Employee>();
+        public List<string> readList = new List<string> ();
 
         //Add Employee to List
         public void addEmployee(string name, string pass)
         {
-            EmpList.Add(new Employee(name, pass).ToString());
-            readList.Add(new Employee(name, pass));
+            readList.Add(new Employee(name, pass).ToString());
+            EmpList.Add(new Employee(name, pass));
         }
         
         //Write contents from a list to a txt file
         public void writeFile()
         {
-            StreamWriter myWriter = new StreamWriter(path);
+            StreamWriter myWriter = new StreamWriter(path, true); //append, not overwrite
             foreach (var employee in EmpList)
             {
                 myWriter.WriteLine(employee.ToString());
             }
             myWriter.Close();
+
         }
 
         //Reading from txt File to a list
-        public List<string> readFile()
+        public List<Employee> readFile()
         {
             FileStream myStream = new FileStream(path, FileMode.OpenOrCreate);
             StreamReader myReader = new StreamReader(myStream);
@@ -42,7 +43,8 @@ namespace Project.DataAccessLayer
             {
                 name = line.Split(new Char[] { ',' })[0];
                 pass = line.Substring(line.LastIndexOf(',') + 1);
-                readList.Add(new Employee(name,pass));
+                EmpList.Add(new Employee(name, pass));
+                readList.Add(new Employee(name,pass).ToString());
             }
             myReader.Close();
             myStream.Close();

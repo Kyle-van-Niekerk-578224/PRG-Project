@@ -22,10 +22,7 @@ namespace Project.DataAccessLayer
         //Write contents from a list to a txt file
         public void writeFile()
         {
-            FileStream myStream = new FileStream(path, FileMode.OpenOrCreate);
-            StreamReader myReader = new StreamReader(myStream);
-
-            StreamWriter myWriter = new StreamWriter(path); // FILE IN USE
+            StreamWriter myWriter = new StreamWriter(path);
             foreach (var employee in EmpList)
             {
                 myWriter.WriteLine(employee.ToString());

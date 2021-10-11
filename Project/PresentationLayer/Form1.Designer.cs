@@ -31,11 +31,11 @@ namespace Project
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.LinkLabel();
+            this.tbxName = new System.Windows.Forms.TextBox();
+            this.tbxPass = new System.Windows.Forms.TextBox();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.btnNew = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -57,60 +57,62 @@ namespace Project
             this.label2.TabIndex = 1;
             this.label2.Text = "Password:";
             // 
-            // linkLabel1
+            // btnUpdate
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(87, 273);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(95, 15);
-            this.linkLabel1.TabIndex = 2;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Forgot Password";
+            this.btnUpdate.AutoSize = true;
+            this.btnUpdate.Location = new System.Drawing.Point(87, 273);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(95, 15);
+            this.btnUpdate.TabIndex = 2;
+            this.btnUpdate.TabStop = true;
+            this.btnUpdate.Text = "Forgot Password";
             // 
-            // textBox1
+            // tbxName
             // 
-            this.textBox1.Location = new System.Drawing.Point(113, 37);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "Enter your Username";
-            this.textBox1.Size = new System.Drawing.Size(122, 23);
-            this.textBox1.TabIndex = 3;
+            this.tbxName.Location = new System.Drawing.Point(113, 37);
+            this.tbxName.Name = "tbxName";
+            this.tbxName.PlaceholderText = "Enter your Username";
+            this.tbxName.Size = new System.Drawing.Size(122, 23);
+            this.tbxName.TabIndex = 3;
             // 
-            // textBox2
+            // tbxPass
             // 
-            this.textBox2.Location = new System.Drawing.Point(113, 80);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PlaceholderText = "Enter your Password";
-            this.textBox2.Size = new System.Drawing.Size(122, 23);
-            this.textBox2.TabIndex = 4;
+            this.tbxPass.Location = new System.Drawing.Point(113, 80);
+            this.tbxPass.Name = "tbxPass";
+            this.tbxPass.PlaceholderText = "Enter your Password";
+            this.tbxPass.Size = new System.Drawing.Size(122, 23);
+            this.tbxPass.TabIndex = 4;
             // 
-            // button1
+            // btnLogin
             // 
-            this.button1.Location = new System.Drawing.Point(50, 119);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(185, 84);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Log In";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnLogin.Location = new System.Drawing.Point(50, 119);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(185, 84);
+            this.btnLogin.TabIndex = 5;
+            this.btnLogin.Text = "Log In";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnNew
             // 
-            this.button2.Location = new System.Drawing.Point(73, 222);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Create new user";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnNew.Location = new System.Drawing.Point(73, 222);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(130, 23);
+            this.btnNew.TabIndex = 6;
+            this.btnNew.Text = "Create new user";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(277, 313);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.btnNew);
+            this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.tbxPass);
+            this.Controls.Add(this.tbxName);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
@@ -124,11 +126,11 @@ namespace Project
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.LinkLabel btnUpdate;
+        private System.Windows.Forms.TextBox tbxName;
+        private System.Windows.Forms.TextBox tbxPass;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button btnNew;
     }
 }
 

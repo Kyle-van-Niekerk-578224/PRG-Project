@@ -14,8 +14,8 @@ namespace Project.DataAccessLayer
         static string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location); //Relative Path to txt data file
         string path = dir + @"..\..\..\..\DataLayer\Employees.txt";
 
-        public List<Employee> EmpList = new List<Employee>();
-        public List<string> readList = new List<string> ();
+        public List<Employee> EmpList = new List<Employee>();   //For using in program
+        public List<string> readList = new List<string> ();     //For Saving to file, updated alongside EmpList
 
         //Add Employee to List
         public void addEmployee(string name, string pass)
@@ -33,7 +33,6 @@ namespace Project.DataAccessLayer
                 myWriter.WriteLine(employee.ToString());
             }
             myWriter.Close();
-
         }
 
         //Reading from txt File to a list
@@ -55,6 +54,47 @@ namespace Project.DataAccessLayer
             myStream.Close();
             
             return EmpList;
+        }
+
+        public int login(string name, string pass)
+        {
+            //bool flagValid = false;
+            bool flagName = false;
+            bool flagPass = false;
+
+            string testName, testPass;
+
+            for (int i =0; i < EmpList.Count; i++)
+            {
+                testName = EmpList[i].Username;
+                testPass = EmpList[i].Password;
+                if (testName == name)
+                {
+                    flagName = true;
+                    if (testPass == pass)
+                    {
+                        flagPass = true;
+                        //flagValid = true;
+                        return 1;
+                    }
+                }
+            }
+            if (flagPass == true && flagName == true)
+            {
+                return 1;
+            }
+            else
+            if ((flagName == true) && (flagPass == false))
+            {
+                return 2;
+            }
+            else
+            if ((flagName == false) && (flagPass == true))
+            {
+                return 3;
+            }
+            else
+                return 4;
         }
     }
 

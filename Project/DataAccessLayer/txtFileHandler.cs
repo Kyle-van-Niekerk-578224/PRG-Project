@@ -8,7 +8,12 @@ namespace Project.DataAccessLayer
 {
     class txtFileHandler
     {
-        public const string path = @"F:\PRG Project\Project\DataLayer\Employees.txt"; //Absolute Path to txt data file
+        //public const string path = @"F:\PRG Project\Project\DataLayer\Employees.txt"; //Absolute Path to txt data file
+        //public const string path = @".\Project\DataLayer\Employees.txt"; //Finds Path + File, but does not work
+
+        static string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location); //Relative Path to txt data file
+        string path = dir + @"..\..\..\..\DataLayer\Employees.txt";
+
         public List<Employee> EmpList = new List<Employee>();
         public List<string> readList = new List<string> ();
 

@@ -124,6 +124,8 @@ namespace Project
         {
             //Inputbox does not exist 
             //string input = Microsoft.VisualBasic.Interaction.InputBox("Enter you Username", "Forgot Password", "Default", 0, 0);
+            string name = tbxName.Text;
+            MessageBox.Show(fh.viewPassword(name));
         }
     }
 }

@@ -98,7 +98,6 @@ namespace Project.DataAccessLayer
                         {
                             testName = EmpList[i].Username;
                             testPass = EmpList[i].Password;
-                    //USE LIST OPERATIONS INSTEAD OF MANUALLY FINDING
                             if (string.Equals(testName, name))
                             {
                                 flagName = true;
@@ -128,6 +127,27 @@ namespace Project.DataAccessLayer
         {
             Employee result = EmpList.Find(obj => obj.Username == name);
             return result;
+        }
+
+        //Retrieve a password for a user by username
+        public string viewPassword(string name)
+        {
+            string testName = "";
+
+            for (int i = 0; i < EmpList.Count; i++)
+            {
+                testName = EmpList[i].Username;
+                if (string.Equals(testName, name))
+                {
+                    return "The password for " +name+ " is: " + EmpList[i].Password;
+                }
+            }
+
+            if (name == "")
+            {
+                return "Please enter the Username to retieve your password";
+            }
+            return "No user with the name " + name + " exists";
         }
     }
 

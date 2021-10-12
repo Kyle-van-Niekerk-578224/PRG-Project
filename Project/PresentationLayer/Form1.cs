@@ -1,29 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Project.BusinessLogicLayer;
 using Project.DataAccessLayer;
-using Project.BusinessLogicLayer;
+using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace Project
 {
     public partial class Form1 : Form
     {
-        List<Employee> myEmployees = new List<Employee>();
-
+        public List<Employee> myEmployees = new List<Employee>();
+        public txtFileHandler fh = new txtFileHandler();
         public Form1()
         {
             InitializeComponent();
-
-            //Read File
-            txtFileHandler fh = new txtFileHandler();
-            myEmployees = fh.readFile();
             //DEBUG STUFF
             /*
             for (int i = 0; i < myEmployees.Count; i++)
@@ -31,16 +21,6 @@ namespace Project
                 listBox1.Items.Add(myEmployees[i].ToString());
             }
             */
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -65,32 +45,29 @@ namespace Project
             }
             if (flagValid == true)
             {
-                txtFileHandler fh = new txtFileHandler();
-
-                int loginCode = fh.login(name, pass);   //<-----------ALWAYS RETURNS 4
-                label1.Text = name; // FOR DEBUGGING
-                label2.Text = pass; // FOR DEBUGGING
+                //txtFileHandler fh = new txtFileHandler();
+                int loginCode = fh.login(name, pass); 
 
                 switch (loginCode)
                 {
                     case 1:
                         {
                             MessageBox.Show("Welcome " + name);
-                            //change form--------------------------------
-                            
+
+                            //Change active Form to Form2
+                            Form2 f2 = new Form2();
+                            f2.Show();
+                            this.Hide();
                         }
                         break;
                     case 2:
                         MessageBox.Show("Incorrect password for " + name);
                         break;
                     case 3:
-                        MessageBox.Show("Incorrect login details"); //For testing only, will not happen in final
-                        break;
-                    case 4:
                         MessageBox.Show("A user with these details does not exist");
                         break;
                     default:
-                        // code block
+                        MessageBox.Show("An error has occurred");
                         break;
                 }
             }
@@ -125,7 +102,7 @@ namespace Project
                 //If all inputs are valid, message displays and employee is saved to file
                 if (flagValid == true)
                 {
-                    txtFileHandler fh = new txtFileHandler();
+                    //txtFileHandler fh = new txtFileHandler();
                     fh.addEmployee(tbxName.Text, tbxPass.Text);
                     fh.writeFile();
                     MessageBox.Show("Successfully registered user " + tbxName.Text);
@@ -135,6 +112,13 @@ namespace Project
             }
             else
                 MessageBox.Show("Your username should only contain letters, numbers, and aunderscores");
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //Read File
+            //txtFileHandler fh = new txtFileHandler();
+            myEmployees = fh.readFile();
         }
     }
 }

@@ -46,7 +46,6 @@ namespace Project
             this.label1.Size = new System.Drawing.Size(63, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Username:";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // label2
             // 
@@ -117,6 +116,7 @@ namespace Project
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Log In";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

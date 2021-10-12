@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using Project.BusinessLogicLayer;
+using System.Runtime.InteropServices;
 
 namespace Project.DataAccessLayer
 {
-    class txtFileHandler
+    public class txtFileHandler
     {
         //public const string path = @"F:\PRG Project\Project\DataLayer\Employees.txt"; //Absolute Path to txt data file
         //public const string path = @".\Project\DataLayer\Employees.txt"; //Finds Path + File, but does not work
@@ -36,6 +37,7 @@ namespace Project.DataAccessLayer
         }
 
         //Reading from txt File to a list
+        //========================================================================================
         public List<Employee> readFile()
         {
             FileStream myStream = new FileStream(path, FileMode.OpenOrCreate);
@@ -45,56 +47,56 @@ namespace Project.DataAccessLayer
 
             while ((line = myReader.ReadLine()) != null)
             {
+                readList.Add(line);   //Is a list of strings
                 name = line.Split(new Char[] { ',' })[0];
                 pass = line.Substring(line.LastIndexOf(',') + 1);
-                EmpList.Add(new Employee(name, pass));
-                readList.Add(new Employee(name,pass).ToString());
+                addEmployee(name, pass);
+                EmpList.Add(new Employee(name, pass));  //Is a list of employees
+   
             }
+           
             myReader.Close();
             myStream.Close();
             
             return EmpList;
         }
+        //========================================================================================
 
-        public int login(string name, string pass)
+
+        public int login(string name, string pass) // always 4, outputs " , "
         {
-            //bool flagValid = false;
-            bool flagName = false;
-            bool flagPass = false;
+                        bool flagName = false;
+                        bool flagPass = false;
 
-            string testName, testPass;
+                        string testName ="never", testPass = "changed";    //  <------------For Debugging, indicates if strings change from initial value
 
-            for (int i =0; i < EmpList.Count; i++)
-            {
-                testName = EmpList[i].Username;
-                testPass = EmpList[i].Password;
-                if (testName == name)
-                {
-                    flagName = true;
-                    if (testPass == pass)
-                    {
-                        flagPass = true;
-                        //flagValid = true;
-                        return 1;
-                    }
-                }
-            }
-            if (flagPass == true && flagName == true)
-            {
-                return 1;
-            }
-            else
-            if ((flagName == true) && (flagPass == false))
-            {
-                return 2;
-            }
-            else
-            if ((flagName == false) && (flagPass == true))
-            {
-                return 3;
-            }
-            else
-                return 4;
+            for (int i = 0; i < EmpList.Count; i++)
+                        {
+                            testName = EmpList[i].Username;
+                            testPass = EmpList[i].Password;
+                    //USE LIST OPERATIONS INSTEAD OF MANUALLY FINDING
+                            if (string.Equals(testName, name))
+                            {
+                                flagName = true;
+                                if (string.Equals(testPass, pass))
+                                {
+                                    flagPass = true;
+                                    return 1;
+                                }
+                            }
+                        }
+
+                        if (flagPass == true && flagName == true)
+                        {
+                            return 1;
+                        }
+                        else
+                        if ((flagName == true) && (flagPass == false))
+                        {
+                            return 2;
+                        }
+                        else
+                            return 3;
         }
     }
 

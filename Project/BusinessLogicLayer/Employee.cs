@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Project.BusinessLogicLayer
 {
-    class Employee
+    public class Employee
     {
         private string username, password;
 

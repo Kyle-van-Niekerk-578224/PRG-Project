@@ -14,5 +14,12 @@ namespace Project
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DataHandler dh = new DataHandler();
+            s = dh.getStudent();
+            label1.Text = dh.search(textBox1.Text);
+        }
     }
 }

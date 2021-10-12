@@ -65,6 +65,7 @@ namespace Project
             this.btnUpdate.TabIndex = 2;
             this.btnUpdate.TabStop = true;
             this.btnUpdate.Text = "Forgot Password";
+            this.btnUpdate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnUpdate_LinkClicked);
             // 
             // tbxName
             // 

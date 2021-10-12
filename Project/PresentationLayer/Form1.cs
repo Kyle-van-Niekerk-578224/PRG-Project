@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+//using Microsoft.VisualBasic;
 
 namespace Project
 {
@@ -15,6 +16,7 @@ namespace Project
         {
             InitializeComponent();
             //DEBUG STUFF
+            //Displays all registered users in a listbox
             /*
             for (int i = 0; i < myEmployees.Count; i++)
             {
@@ -45,7 +47,6 @@ namespace Project
             }
             if (flagValid == true)
             {
-                //txtFileHandler fh = new txtFileHandler();
                 int loginCode = fh.login(name, pass); 
 
                 switch (loginCode)
@@ -102,7 +103,6 @@ namespace Project
                 //If all inputs are valid, message displays and employee is saved to file
                 if (flagValid == true)
                 {
-                    //txtFileHandler fh = new txtFileHandler();
                     fh.addEmployee(tbxName.Text, tbxPass.Text);
                     fh.writeFile();
                     MessageBox.Show("Successfully registered user " + tbxName.Text);
@@ -116,9 +116,14 @@ namespace Project
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Read File
-            //txtFileHandler fh = new txtFileHandler();
+            //Initialises list of employees from a text file
             myEmployees = fh.readFile();
+        }
+
+        private void btnUpdate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            //Inputbox does not exist 
+            //string input = Microsoft.VisualBasic.Interaction.InputBox("Enter you Username", "Forgot Password", "Default", 0, 0);
         }
     }
 }

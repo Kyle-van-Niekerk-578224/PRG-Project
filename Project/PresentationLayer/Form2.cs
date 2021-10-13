@@ -24,5 +24,12 @@ namespace Project
         {
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Form3 f3 = new Form3();
+            f3.Show();
+            this.Hide();
+        }
     }
 }

@@ -35,8 +35,8 @@ namespace Project
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -98,14 +98,6 @@ namespace Project
             this.panel1.TabIndex = 4;
             this.panel1.Tag = "Search by Student ID";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(23, 14);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "Enter Student ID";
-            this.textBox1.Size = new System.Drawing.Size(154, 23);
-            this.textBox1.TabIndex = 0;
-            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(23, 43);
@@ -114,6 +106,14 @@ namespace Project
             this.button4.TabIndex = 1;
             this.button4.Text = "Search for Student";
             this.button4.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(23, 14);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.PlaceholderText = "Enter Student ID";
+            this.textBox1.Size = new System.Drawing.Size(154, 23);
+            this.textBox1.TabIndex = 0;
             // 
             // label1
             // 
@@ -132,6 +132,7 @@ namespace Project
             this.button5.TabIndex = 6;
             this.button5.Text = "Open Module Manager";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
